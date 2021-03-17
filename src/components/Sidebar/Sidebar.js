@@ -1,25 +1,25 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useLocation, Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useLocation, Link } from 'react-router-dom';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
-import Divider from "@material-ui/core/Divider";
-import Drawer from "@material-ui/core/Drawer";
-import Hidden from "@material-ui/core/Hidden";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Menu from "@material-ui/core/Menu";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Menu from '@material-ui/core/Menu';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 // @material-ui/icons components
-import Clear from "@material-ui/icons/Clear";
-import MenuIcon from "@material-ui/icons/Menu";
+import Clear from '@material-ui/icons/Clear';
+import MenuIcon from '@material-ui/icons/Menu';
 
 // core components
-import componentStyles from "assets/theme/components/sidebar.js";
+import componentStyles from 'assets/theme/components/sidebar.js';
 
 const useStyles = makeStyles(componentStyles);
 
@@ -38,7 +38,7 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
     setAnchorEl(null);
   };
 
-  const menuId = "responsive-menu-id";
+  const menuId = 'responsive-menu-id';
   // creates the links that appear in the left menu / Sidebar
   const createLinks = (routes) => {
     return routes.map((prop, key) => {
@@ -48,8 +48,8 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
         return (
           <Typography
             key={key}
-            variant="h6"
-            component="h6"
+            variant='h6'
+            component='h6'
             classes={{ root: classes.title }}
           >
             {prop.title}
@@ -58,19 +58,19 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
       }
       let textContent = (
         <>
-          <Box minWidth="2.25rem" display="flex" alignItems="center">
-            {typeof prop.icon === "string" ? (
+          <Box minWidth='2.25rem' display='flex' alignItems='center'>
+            {typeof prop.icon === 'string' ? (
               <Box
-                component="i"
-                className={prop.icon + " " + classes["text" + prop.iconColor]}
+                component='i'
+                className={prop.icon + ' ' + classes['text' + prop.iconColor]}
               />
             ) : null}
-            {typeof prop.icon === "object" ? (
+            {typeof prop.icon === 'object' ? (
               <Box
                 component={prop.icon}
-                width="1.25rem!important"
-                height="1.25rem!important"
-                className={classes["text" + prop.iconColor]}
+                width='1.25rem!important'
+                height='1.25rem!important'
+                className={classes['text' + prop.iconColor]}
               />
             ) : null}
           </Box>
@@ -81,18 +81,18 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
         return (
           <ListItem
             key={key}
-            component={"a"}
+            component={'a'}
             href={prop.href}
             onClick={handleMenuClose}
             classes={{
               root:
                 classes.listItemRoot +
                 (prop.upgradeToPro
-                  ? " " + classes.listItemRootUpgradeToPro
-                  : ""),
+                  ? ' ' + classes.listItemRootUpgradeToPro
+                  : ''),
               selected: classes.listItemSelected,
             }}
-            target="_blank"
+            target='_blank'
             selected={prop.upgradeToPro === true}
           >
             {textContent}
@@ -109,8 +109,8 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
               root:
                 classes.listItemRoot +
                 (prop.upgradeToPro
-                  ? " " + classes.listItemRootUpgradeToPro
-                  : ""),
+                  ? ' ' + classes.listItemRootUpgradeToPro
+                  : ''),
               selected: classes.listItemSelected,
             }}
             selected={
@@ -139,33 +139,33 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
     ) : null;
   return (
     <>
-      <Hidden smDown implementation="css">
-        <Drawer variant="permanent" anchor="left" open>
-          <Box paddingBottom="1rem">{logoObject}</Box>
+      <Hidden smDown implementation='css'>
+        <Drawer variant='permanent' anchor='left' open>
+          <Box paddingBottom='1rem'>{logoObject}</Box>
           <List classes={{ root: classes.listRoot }}>
             {createLinks(routes)}
           </List>
         </Drawer>
       </Hidden>
-      <Hidden mdUp implementation="css">
-        <AppBar position="relative" color="default" elevation={0}>
+      <Hidden mdUp implementation='css'>
+        <AppBar position='relative' color='default' elevation={0}>
           <Toolbar>
             <Container
-              display="flex!important"
-              justifyContent="space-between"
-              alignItems="center"
-              marginTop=".75rem"
-              marginBottom=".75rem"
+              display='flex!important'
+              justifyContent='space-between'
+              alignItems='center'
+              marginTop='.75rem'
+              marginBottom='.75rem'
               component={Box}
               maxWidth={false}
-              padding="0!important"
+              padding='0!important'
             >
               <Box
                 component={MenuIcon}
-                width="2rem!important"
-                height="2rem!important"
+                width='2rem!important'
+                height='2rem!important'
                 aria-controls={menuId}
-                aria-haspopup="true"
+                aria-haspopup='true'
                 onClick={handleMenuOpen}
               />
               {logoObject}
@@ -175,40 +175,40 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
         </AppBar>
         <Menu
           anchorEl={anchorEl}
-          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
           id={menuId}
           keepMounted
-          transformOrigin={{ vertical: "top", horizontal: "right" }}
+          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
           open={isMenuOpen}
           onClose={handleMenuClose}
           classes={{ paper: classes.menuPaper }}
         >
           <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            paddingLeft="1.25rem"
-            paddingRight="1.25rem"
-            paddingBottom="1rem"
+            display='flex'
+            justifyContent='space-between'
+            alignItems='center'
+            paddingLeft='1.25rem'
+            paddingRight='1.25rem'
+            paddingBottom='1rem'
             className={classes.outlineNone}
           >
             {logoObject}
             <Box
               component={Clear}
-              width="2rem!important"
-              height="2rem!important"
+              width='2rem!important'
+              height='2rem!important'
               aria-controls={menuId}
-              aria-haspopup="true"
+              aria-haspopup='true'
               onClick={handleMenuClose}
             />
           </Box>
           <Box
             component={Divider}
-            marginBottom="1rem!important"
-            marginLeft="1.25rem!important"
-            marginRight="1.25rem!important"
+            marginBottom='1rem!important'
+            marginLeft='1.25rem!important'
+            marginRight='1.25rem!important'
           />
-          <Box paddingLeft="1.25rem" paddingRight="1.25rem">
+          <Box paddingLeft='1.25rem' paddingRight='1.25rem'>
             {input}
           </Box>
           <List classes={{ root: classes.listRoot }}>
@@ -265,14 +265,14 @@ Sidebar.propTypes = {
           PropTypes.object,
         ]),
         iconColor: PropTypes.oneOf([
-          "Primary",
-          "PrimaryLight",
-          "Error",
-          "ErrorLight",
-          "Warning",
-          "WarningLight",
-          "Info",
-          "InfoLight",
+          'Primary',
+          'PrimaryLight',
+          'Error',
+          'ErrorLight',
+          'Warning',
+          'WarningLight',
+          'Info',
+          'InfoLight',
         ]),
       }),
       // this generates a Link (<Link to="layout + path">..</Link>) link
@@ -289,14 +289,14 @@ Sidebar.propTypes = {
           PropTypes.object,
         ]),
         iconColor: PropTypes.oneOf([
-          "Primary",
-          "PrimaryLight",
-          "Error",
-          "ErrorLight",
-          "Warning",
-          "WarningLight",
-          "Info",
-          "InfoLight",
+          'Primary',
+          'PrimaryLight',
+          'Error',
+          'ErrorLight',
+          'Warning',
+          'WarningLight',
+          'Info',
+          'InfoLight',
         ]),
       }),
       // this is just a title without any action on it
